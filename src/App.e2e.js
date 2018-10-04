@@ -9,4 +9,10 @@ describe('TodoList App', () => {
 
     expect(actualTitle).to.eql('Hotels Kata');
   });
+
+  it('Should have 3 hotels (because of test data - will break once live data)', () => {
+    browser.url('http://localhost:3000/');
+    let elements = browser.elements('.hotel');
+    expect(elements.value).to.have.length(3);
+  });
 });
