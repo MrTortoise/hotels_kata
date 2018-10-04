@@ -11,5 +11,8 @@ describe('get hotel actions will', () => {
   });
 });
 
+
 // naturally this would be a thunk 
 // ... but for brevity An action that calls other actions on basis of callback
+// will eventually push sort + tag requirements into here
+// fastest route to value is ship a hotel list though
