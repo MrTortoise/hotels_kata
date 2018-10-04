@@ -1,5 +1,5 @@
 import { combineReducers, createStore } from 'redux';
-import {hotelsReducer} from './hotelsReducer';
+import { hotelsReducer } from './hotelsReducer';
 
 const reducers = combineReducers({
   hotels: hotelsReducer,

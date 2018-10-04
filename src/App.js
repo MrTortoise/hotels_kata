@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getHotelsSuccessAction } from './getHotels/getHotelsActions';
-import Hotel from './Hotel'
+import { Hotels } from './Hotel';
 
 import './App.css';
 
@@ -16,11 +16,7 @@ class App extends React.Component {
   }
 
   render() {
-    return (
-      <ul className="hotel-search">
-        {this.props.hotels.map(Hotel)}
-      </ul>
-    );
+    return (<Hotels hotels={this.props.hotels}/> );
   }
 }
 
