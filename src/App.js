@@ -16,7 +16,7 @@ class App extends React.Component {
   }
 
   render() {
-    return (<Hotels hotels={this.props.hotels}/> );
+    return (<Hotels hotels={this.props.hotels }/> );
   }
 }
 
