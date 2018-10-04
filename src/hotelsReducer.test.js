@@ -4,7 +4,17 @@ import { GET_HOTELS_SUCCESS } from './getHotels/getHotelsActions';
 
 const initialState = { hotels: [] };
 
-const hotelsReducer = (state, action) => state;
+const hotelsReducer = (state = initialState, action) => {
+  switch (action.type) {
+  case GET_HOTELS_SUCCESS:
+    return {
+      ...state,
+      hotels: action.hotels,
+    };
+  default:
+    return state;
+  }
+};
 
 describe('hotels reducer will', () => {
   it('returns initial state when initialised', () => {
