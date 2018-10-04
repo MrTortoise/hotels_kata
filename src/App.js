@@ -1,7 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-export default () => (
-    <div className="hotel-search">App</div>
+const Hotel = ( hotel ) => (
+  <li key={hotel.name} className="hotel">
+a hotel
+  </li>
 );
+
+export default ({ hotels }) => (
+  <ul className="hotel-search">
+    {hotels.map(Hotel)}
+  </ul>
+);
+
+

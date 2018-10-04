@@ -1,20 +1,28 @@
-/* global it, expect, document */
+/* global it, expect, describe, */
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme, { shallow } from 'enzyme';
 
 import App from './App';
 
-Enzyme.configure({ adapter: new Adapter() })
+Enzyme.configure({ adapter: new Adapter() });
 
-it('App renders without crashing', () => {
-  const component = shallow(<App />);
-  expect(component.exists()).toEqual(true);
+const hotels = [{ name: 'one' }, { name: 'two' }];
+
+describe('app will', () => {
+  it('render without crashing', () => {
+    const component = shallow(<App hotels={hotels} />);
+    expect(component.exists()).toEqual(true);
+  });
+
+  it('have a hotel search component', () => {
+    const app = shallow(<App hotels={hotels} />);
+    expect(app.find('.hotel-search').length).toBeGreaterThan(0);
+  });
+
+  it('have hotels', () => {
+    const app = shallow(<App hotels={hotels} />);
+    expect(app.find('.hotel').length).toBe(2);
+  });
 });
-
-it('has a hotel search component', ()=>{
-  const app = shallow(<App />);
-  expect(app.find('.hotel-search').length).toBeGreaterThan(0)
-})
