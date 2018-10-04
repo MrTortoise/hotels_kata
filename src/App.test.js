@@ -2,18 +2,19 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import Enzyme, { shallow } from 'enzyme';
 
 import App from './App';
 
-
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
+Enzyme.configure({ adapter: new Adapter() })
 
 it('App renders without crashing', () => {
   const component = shallow(<App />);
   expect(component.exists()).toEqual(true);
 });
+
+it('has a hotel search component', ()=>{
+  const app = shallow(<App />);
+  expect(app.find('.hotel-search').length).toBeGreaterThan(0)
+})
