@@ -2,14 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getHotelsSuccessAction } from './getHotels/getHotelsActions';
+import Hotel from './Hotel'
 
 import './App.css';
-
-const Hotel = hotel => (
-  <li key={hotel.name} className="hotel">
-a hotel
-  </li>
-);
 
 class App extends React.Component {
   constructor(props) {
