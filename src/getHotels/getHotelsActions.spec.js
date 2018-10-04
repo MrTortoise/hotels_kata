@@ -10,3 +10,6 @@ describe('get hotel actions will', () => {
     expect(result.hotels).toEqual(hotels);
   });
 });
+
+// naturally this would be a thunk 
+// ... but for brevity An action that calls other actions on basis of callback
