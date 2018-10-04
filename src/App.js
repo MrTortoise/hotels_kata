@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getHotelsSuccessAction } from './getHotels/getHotelsActions';
 
 import './App.css';
 
@@ -9,14 +11,37 @@ a hotel
   </li>
 );
 
-const App = ({ hotels }) => (
-  <ul className="hotel-search">
-    {hotels.map(Hotel)}
-  </ul>
-);
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this.props.getHotels();
+  }
+
+  render() {
+    return (
+      <ul className="hotel-search">
+        {this.props.hotels.map(Hotel)}
+      </ul>
+    );
+  }
+}
 
 App.propTypes = {
   hotels: PropTypes.array.isRequired,
+  getHotels: PropTypes.func.isRequired,
 };
 
-export default App;
+const mapStateToProps = state => ({
+  hotels: state.hotels.hotels,
+});
+
+const mapDispatchToProps = dispatch => ({
+  getHotels: () => {
+    dispatch(getHotelsSuccessAction());
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
