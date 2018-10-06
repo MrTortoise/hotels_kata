@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
     "react-scripts": "1.1.5",
-    "react-select": "^2.0.0",
+    "react-select": "^2.1.0",
     "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0",
-    "prop-types": "^15.6.2"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,7 +39,6 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
-
     "react-test-renderer": "^16.5.2",
     "selenium-standalone": "^6.15.3",
     "wdio-dot-reporter": "0.0.10",

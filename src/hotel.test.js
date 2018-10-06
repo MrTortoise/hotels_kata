@@ -11,7 +11,7 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('hotel search component will', () => {
   it('have right class', () => {
-    const hotelsUT = shallow(<Hotels hotels={hotels} searchForHotel={() => {}} />);
+    const hotelsUT = shallow(<Hotels hotels={hotels} getHotels={() => {}} />);
     expect(hotelsUT.find('.hotel-search').length).toEqual(1);
   });
 
@@ -24,16 +24,21 @@ describe('hotel search component will', () => {
   });
 
   it('will have hotel search results', () => {
-    const hotelsUT = shallow(<Hotels hotels={hotels} searchForHotel={() => {}} />);
+    const hotelsUT = shallow(<Hotels hotels={hotels} getHotels={() => {}} />);
     expect(hotelsUT.find('.hotel-search-results').length).toEqual(1);
   });
 
-  it('should have a search button', (done) => {
+  it('should have a search button - that gets results', (done) => {
     const hotelSearch = () => {
-   done()
+      done();
     };
-    const hotelsUT = shallow(<Hotels hotels={hotels} searchForHotel={hotelSearch} />);
+    const hotelsUT = shallow(<Hotels hotels={hotels} getHotels={hotelSearch} />);
     expect(hotelsUT.find('.hotel-search-submit').length).toEqual(1);
     hotelsUT.find('form').simulate('submit');
   });
+
+  it('should have a sort order option', ()=>{
+    const hotelsUT = shallow(<Hotels hotels={hotels} getHotels={() => {}} />);
+    expect(hotelsUT.find('.hotel-search-sort-order').length).toEqual(1);
+  })
 });

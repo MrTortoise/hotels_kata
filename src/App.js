@@ -6,7 +6,7 @@ import { Hotels } from './Hotel';
 
 import './App.css';
 
-const App = ({ hotels, getHotels }) => (<Hotels hotels={hotels} searchForHotel={getHotels} />);
+const App = ({ hotels, getHotels }) => (<Hotels hotels={hotels} getHotels={getHotels} />);
 
 App.propTypes = {
   hotels: PropTypes.array.isRequired,

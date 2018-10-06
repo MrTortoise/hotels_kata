@@ -25,7 +25,7 @@ describe('TodoList App', () => {
   it('should allow me to search for hotels', ()=>{
     browser.url('http://localhost:3000/');
     browser.click('.hotel-search-submit');
-    const elements = browser.elements('.hotel');
+    const elements = browser.elements('.hotel');    
     expect(elements.value).to.have.length(3);
   });
 });
