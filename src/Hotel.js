@@ -9,13 +9,27 @@ export const Hotel = hotel => (
   </li>
 );
 
-export const Hotels = ({ hotels }) => (
-  <ul className="hotel-search">
-    {hotels.map(Hotel)}
-  </ul>
+export const Hotels = ({ hotels, searchForHotel }) => (
+  <div className="hotel-search">
+    <form onSubmit={(event) => {
+      if (event) {
+        event.preventDefault();
+      }
+
+      searchForHotel();
+    }}
+    >
+      <button type="submit" className="hotel-search-submit">Search</button>
+    </form>
+
+    <ul className="hotel-search-results">
+      {hotels.map(Hotel)}
+    </ul>
+  </div>
 );
 
 
 Hotels.propTypes = {
   hotels: PropTypes.array.isRequired,
+  searchForHotel: PropTypes.func.isRequired,
 };

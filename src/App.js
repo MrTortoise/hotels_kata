@@ -6,19 +6,7 @@ import { Hotels } from './Hotel';
 
 import './App.css';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
-    this.props.getHotels();
-  }
-
-  render() {
-    return (<Hotels hotels={this.props.hotels }/> );
-  }
-}
+const App = ({ hotels, getHotels }) => (<Hotels hotels={hotels} searchForHotel={getHotels} />);
 
 App.propTypes = {
   hotels: PropTypes.array.isRequired,

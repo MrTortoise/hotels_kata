@@ -1,4 +1,4 @@
-/* global it, expect, describe, beforeEach */
+/* global it, expect, describe */
 
 import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
@@ -11,7 +11,7 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('hotel search component will', () => {
   it('have right class', () => {
-    const hotelsUT = shallow(<Hotels hotels={hotels} />);
+    const hotelsUT = shallow(<Hotels hotels={hotels} searchForHotel={() => {}} />);
     expect(hotelsUT.find('.hotel-search').length).toEqual(1);
   });
 
@@ -21,5 +21,19 @@ describe('hotel search component will', () => {
     expect(hotel.find('.hotel-name').length).toBe(1);
     expect(hotel.find('.hotel-starRating').length).toBe(1);
     expect(hotel.find('.hotel-facilities').length).toBe(1);
+  });
+
+  it('will have hotel search results', () => {
+    const hotelsUT = shallow(<Hotels hotels={hotels} searchForHotel={() => {}} />);
+    expect(hotelsUT.find('.hotel-search-results').length).toEqual(1);
+  });
+
+  it('should have a search button', (done) => {
+    const hotelSearch = () => {
+   done()
+    };
+    const hotelsUT = shallow(<Hotels hotels={hotels} searchForHotel={hotelSearch} />);
+    expect(hotelsUT.find('.hotel-search-submit').length).toEqual(1);
+    hotelsUT.find('form').simulate('submit');
   });
 });
