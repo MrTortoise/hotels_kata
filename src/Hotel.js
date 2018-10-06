@@ -18,7 +18,7 @@ const options = [
 class Hotels extends React.Component{
   constructor(props){
     super(props)
-    this.state = {sortOrder:  { value: 'asc', label: 'ascending' }}
+    this.state = {sortOrder:   { value: 'desc', label: 'descending' }}
   }
 
   onHotelSortOrderChanged = (value) => {

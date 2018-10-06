@@ -15,7 +15,7 @@ describe('hotel search component will', () => {
     expect(hotelsUT.find('.hotel-search').length).toEqual(1);
   });
 
-  it('have one hotel', () => {
+  it('have one hotel', () => {``
     const hotel = shallow(<Hotel hotel={{ name: 'one', starRating: 5, facilities: ['pub', 'rooms'] }} />);
     expect(hotel.find('.hotel').length).toBe(1);
     expect(hotel.find('.hotel-name').length).toBe(1);
@@ -40,5 +40,24 @@ describe('hotel search component will', () => {
   it('should have a sort order option', ()=>{
     const hotelsUT = shallow(<Hotels hotels={hotels} getHotels={() => {}} />);
     expect(hotelsUT.find('.hotel-search-sort-order').length).toEqual(1);
+  })
+
+  it('should pass default sort order to getHotels', (done)=>{
+    const getHotels = (sortOrder) =>{
+      expect(sortOrder).toEqual('desc')
+      done()
+    }
+    const hotelsUT = shallow(<Hotels hotels={hotels} getHotels={getHotels} />);
+    hotelsUT.find('form').simulate('submit');
+  })
+
+  it('should pass current set sort order to gethotels', (done) =>{
+    const getHotels = (sortOrder) =>{
+      expect(sortOrder).toEqual('asc')
+      done()
+    }
+    const hotelsUT = shallow(<Hotels hotels={hotels} getHotels={getHotels} />);
+    hotelsUT.setState({sortOrder: { value: 'asc', label: 'ascending' }})
+    hotelsUT.find('form').simulate('submit');
   })
 });
