@@ -16,9 +16,8 @@ const hotels = [
   },
 ];
 
-const getHotels = (cb) => {
-  cb(hotels);
-};
 
-export default getHotels;
+export default () => new Promise((resolve) => {
+  resolve(hotels);
+});;
 export { hotels };
